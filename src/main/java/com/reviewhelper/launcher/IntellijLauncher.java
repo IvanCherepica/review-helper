@@ -15,7 +15,7 @@ public class IntellijLauncher {
     private String launchCommand;
 
     public IntellijLauncher() {
-        if (OS_NAME.equals("Linux")) {
+        if (OS_NAME.equals("Linux") || OS_NAME.equals("Mac OS X")) {
             commandUtil = "bash";
             launchCommand = "idea";
         } else if (OS_NAME.toLowerCase().contains("windows")) {
@@ -34,7 +34,7 @@ public class IntellijLauncher {
             files[i] = new File(filesString[i]);
         }
         List<String> pomFilesPathList = searchPomFiles(files);
-        if (OS_NAME.equals("Linux")) {
+        if (OS_NAME.equals("Linux") || OS_NAME.equals("Mac OS X")) {
             for (String pomFile : pomFilesPathList) {
                 System.out.println("Opening : " + pomFile);
                 runLinuxCommand(launchCommand + " " + pomFile);
